@@ -1,0 +1,6 @@
+*
+!.gitignore
+!MapCollision.c
+!MapCollision.h
+!README.md
+!MapCollision.a
