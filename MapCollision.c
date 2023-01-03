@@ -67,6 +67,31 @@ bool isColliding(const Rectangle *rect, MapLayout *map ) {
     return false;
 }
 
+void keepOutsideMapCollision (Rectangle *rect, Rectangle rectPreviousFrame, MapLayout *map) {
+    int originalX = rect->x;
+    int originalY = rect->y;
+
+    for (int i = 0; i < map->amountCollisionBoxes; i++) {
+        while (CheckCollisionRecs(*rect, map->collision[i])) {
+            
+
+            if(rect->x > rectPreviousFrame.x) {
+                rect->x -= 1;
+            } else if(rect->x < rectPreviousFrame.x) {
+                rect->x += 1;
+            }
+
+            if(rect->y > rectPreviousFrame.y) {
+                rect->y -= 1;
+            } else if(rect->y < rectPreviousFrame.y) {
+                rect->y += 1;
+            }            
+        }
+    }
+}
+
+
+
 void unloadMapLayout(MapLayout *map) {
     free(map->collision);
     free(map);

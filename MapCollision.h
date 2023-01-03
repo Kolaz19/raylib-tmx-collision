@@ -18,6 +18,7 @@ typedef struct MapLayout {
 MapLayout* initMapLayout(int xStart, int yStart, int tileHeight, int tileWidth, int amountTileX, int amountTileY, int *collision);
 void unloadMapLayout(MapLayout *map);
 bool isColliding(const Rectangle *rect, MapLayout *map );
+void keepOutsideMapCollision (Rectangle *rect, Rectangle rectPreviousFrame, MapLayout *map);
 
 
 #endif
