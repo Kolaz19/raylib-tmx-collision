@@ -1,7 +1,7 @@
 #ifndef MAP_COLLISION_H
 #define MAP_COLLISION_H
 #include <stdbool.h>
-#include "include/raylib.h"
+#include "./include/raylib.h"
 
 
 typedef struct MapLayout {

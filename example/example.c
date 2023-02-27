@@ -1,8 +1,8 @@
-#include "include/raylib.h"
+#include "../include/raylib.h"
 
 #define RAYLIB_TMX_IMPLEMENTATION
-#include "include/raylib-tmx.h"
-#include "MapCollision.h"
+#include "../include/raylib-tmx.h"
+#include "../MapCollision.h"
 
     
     const int originalScreenWidth = 1920*0.95f;
