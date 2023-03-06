@@ -3,6 +3,7 @@
 #define RAYLIB_TMX_IMPLEMENTATION
 #include "../include/raylib-tmx.h"
 #include "../MapCollision.h"
+#include <stdbool.h>
 
     
     const int originalScreenWidth = 1920*0.95f;
@@ -13,7 +14,7 @@
 
 void config();
 void updatePlayerPosition(Rectangle *rect);
-void resizePlayerWithMousewheel(Rectangle *player);
+bool resizePlayerWithMousewheel(Rectangle *player);
 
 int main(void) {
 
@@ -51,7 +52,9 @@ int main(void) {
     while (!WindowShouldClose())
     {
 
-        resizePlayerWithMousewheel(&player);
+        if (resizePlayerWithMousewheel(&player)) {
+
+        }
         updatePlayerPosition(&player);
         
         //To use this method, we have to keep the previous frame position/information
@@ -130,18 +133,20 @@ void updatePlayerPosition(Rectangle *rect) {
     }
 }
 
-void resizePlayerWithMousewheel(Rectangle *player) {
+bool resizePlayerWithMousewheel(Rectangle *player) {
     float mouseWheelMovement = GetMouseWheelMove();
     if (mouseWheelMovement > 0 && player->height < (25*scaleMultiplier)) {
         player->height = player->height + 3;
         player->width = player->width + 3;
         player->x = 140;
         player->y = 140;
+        return true;
     } else if(mouseWheelMovement < 0 && player->height > 20) {
         player->height = player->height - 3;
         player->width = player->width - 3;    
         player->x = 140;
-        player->y = 140;    
+        player->y = 140;
+        return true;
     }
 }
 
