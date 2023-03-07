@@ -14,7 +14,7 @@
 
 void config();
 void updatePlayerPosition(Rectangle *rect);
-bool resizePlayerWithMousewheel(Rectangle *player);
+void resizePlayerWithMousewheel(Rectangle *player);
 
 int main(void) {
 
@@ -52,9 +52,7 @@ int main(void) {
     while (!WindowShouldClose())
     {
 
-        if (resizePlayerWithMousewheel(&player)) {
-
-        }
+        resizePlayerWithMousewheel(&player);
         updatePlayerPosition(&player);
         
         //To use this method, we have to keep the previous frame position/information
@@ -133,20 +131,18 @@ void updatePlayerPosition(Rectangle *rect) {
     }
 }
 
-bool resizePlayerWithMousewheel(Rectangle *player) {
+void resizePlayerWithMousewheel(Rectangle *player) {
     float mouseWheelMovement = GetMouseWheelMove();
     if (mouseWheelMovement > 0 && player->height < (25*scaleMultiplier)) {
         player->height = player->height + 3;
         player->width = player->width + 3;
         player->x = 140;
         player->y = 140;
-        return true;
     } else if(mouseWheelMovement < 0 && player->height > 20) {
         player->height = player->height - 3;
         player->width = player->width - 3;    
         player->x = 140;
         player->y = 140;
-        return true;
     }
 }
 

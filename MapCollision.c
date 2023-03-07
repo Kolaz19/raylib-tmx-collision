@@ -1,4 +1,5 @@
 #include "MapCollision.h"
+#include "TmxReader.h"
 #include <stdlib.h>
 //#define NDEBUG
 #include <assert.h>
@@ -20,6 +21,7 @@ MapLayout* initMapLayout(int xStart, int yStart, int tileHeight, int tileWidth, 
     layout->tileWidth = tileWidth;
     layout->amountTileX = amountTileX;
     layout->amountTileY = amountTileY;
+    testMethodTmx();
 
     initCollisionRectangles(layout, collision);
 
