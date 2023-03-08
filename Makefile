@@ -12,8 +12,8 @@ build_debug: $(OBJ_DIR)example.o $(LIB_DIR)libraytmxcol.a
 	$(CC) $(CFLAGS) -g -o demo $(OUTPUT_FLAGS) $(OBJ_DIR)example.o $(LINKERS)
 	mv demo.exe $(EX_DIR)
 
-$(LIB_DIR)libraytmxcol.a: $(OBJ_DIR)MapCollision.o $(OBJ_DIR)TmxReader.o
-	ar rcs libraytmxcol.a $(OBJ_DIR)TmxReader.o $(OBJ_DIR)MapCollision.o 
+$(LIB_DIR)libraytmxcol.a: $(OBJ_DIR)MapCollision.o $(OBJ_DIR)TmxCollisionMapper.o
+	ar rcs libraytmxcol.a $(OBJ_DIR)TmxCollisionMapper.o $(OBJ_DIR)MapCollision.o 
 	mv libraytmxcol.a $(LIB_DIR)
 
 $(OBJ_DIR)example.o: $(EX_DIR)example.c
@@ -24,9 +24,9 @@ $(OBJ_DIR)MapCollision.o: MapCollision.c
 	$(CC) -c -g MapCollision.c
 	mv MapCollision.o $(OBJ_DIR)
 
-$(OBJ_DIR)TmxReader.o: TmxReader.c
-	$(CC) -c -g TmxReader.c
-	mv TmxReader.o $(OBJ_DIR)
+$(OBJ_DIR)TmxCollisionMapper.o: TmxCollisionMapper.c
+	$(CC) -c -g TmxCollisionMapper.c
+	mv TmxCollisionMapper.o $(OBJ_DIR)
 
 clean: 
 	rm -f $(OBJ_DIR)*.o $(EX_DIR)demo.exe $(LIB_DIR)libraytmxcol.a

@@ -1,5 +1,5 @@
 #include "MapCollision.h"
-#include "TmxReader.h"
+#include "TmxCollisionMapper.h"
 #include <stdlib.h>
 //#define NDEBUG
 #include <assert.h>
