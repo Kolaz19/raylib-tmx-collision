@@ -2,14 +2,22 @@
 #define TMX_COLLISION_MAPPER_H
 #include "include/tmx.h"
 
-typedef struct MapDataRaw{
-    tmx_map* map;
-    tmx_object** collisionData;
-    int collisionCount;
-} MapDataRaw;
+typedef struct TileWithCollisionData{
+    int xPos;
+    int yPos;
+    tmx_object *collisionData;
+} TileWithCollisionData;
 
-MapDataRaw* getRawMapData(tmx_resource_manager* rm, const char *tmxFileName);
-void unloadRawMapData(MapDataRaw* mapData);
+typedef struct MapCollisionData{
+    tmx_map* map;
+    TileWithCollisionData* collisionTiles;
+    int collisionTilesCount;
+    int* tileWidth;
+    int* tileHeight;
+} MapCollisionData;
+
+MapCollisionData* getRawMapData(tmx_resource_manager* rm, const char *tmxFileName);
+void unloadRawMapData(MapCollisionData* mapData);
 
 
 #endif

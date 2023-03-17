@@ -22,7 +22,7 @@ MapLayout* initMapLayout(int xStart, int yStart, int tileHeight, int tileWidth, 
     layout->amountTileX = amountTileX;
     layout->amountTileY = amountTileY;
     tmx_resource_manager* rm = tmx_make_resource_manager();
-    MapDataRaw* mapData = getRawMapData(rm,"simpleMap.tmx");
+    MapCollisionData* mapData = getRawMapData(rm,"simpleMap.tmx");
     unloadRawMapData(mapData);
     tmx_free_resource_manager(rm);
 
