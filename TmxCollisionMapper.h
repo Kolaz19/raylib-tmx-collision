@@ -16,7 +16,7 @@ typedef struct MapCollisionData{
     int* tileHeight;
 } MapCollisionData;
 
-MapCollisionData* getRawMapData(tmx_resource_manager* rm, const char *tmxFileName);
+MapCollisionData* getRawMapData(tmx_resource_manager* rm, const char *tmxFileName, int layerid);
 void unloadRawMapData(MapCollisionData* mapData);
 
 

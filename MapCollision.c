@@ -1,6 +1,7 @@
 #include "MapCollision.h"
 #include "TmxCollisionMapper.h"
 #include <stdlib.h>
+#include <stdio.h>
 //#define NDEBUG
 #include <assert.h>
 
@@ -22,7 +23,16 @@ MapLayout* initMapLayout(int xStart, int yStart, int tileHeight, int tileWidth, 
     layout->amountTileX = amountTileX;
     layout->amountTileY = amountTileY;
     tmx_resource_manager* rm = tmx_make_resource_manager();
-    MapCollisionData* mapData = getRawMapData(rm,"simpleMap.tmx");
+    MapCollisionData* mapData = getRawMapData(rm,"simpleMap.tmx",1);
+
+/*     for (int i = 0; i < mapData->collisionTilesCount; i++) {
+        printf("x:%d\ty:%d\n",(mapData->collisionTiles+i)->xPos,(mapData->collisionTiles+i)->yPos);
+        printf("colX:%f\tcolY:%f\n",(mapData->collisionTiles+i)->collisionData->x,(mapData->collisionTiles+i)->collisionData->y);
+    }
+ */
+        printf("LayerID:%d\n",mapData->map->ly_head->id);
+
+
     unloadRawMapData(mapData);
     tmx_free_resource_manager(rm);
 
