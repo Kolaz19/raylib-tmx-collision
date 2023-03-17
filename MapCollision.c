@@ -21,9 +21,13 @@ MapLayout* initMapLayout(int xStart, int yStart, int tileHeight, int tileWidth, 
     layout->tileWidth = tileWidth;
     layout->amountTileX = amountTileX;
     layout->amountTileY = amountTileY;
-    testMethodTmx();
+    tmx_resource_manager* rm = tmx_make_resource_manager();
+    MapDataRaw* mapData = getRawMapData(rm,"simpleMap.tmx");
+    unloadRawMapData(mapData);
+    tmx_free_resource_manager(rm);
 
     initCollisionRectangles(layout, collision);
+
 
     return layout;
 }

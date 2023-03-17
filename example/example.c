@@ -17,7 +17,6 @@ void updatePlayerPosition(Rectangle *rect);
 void resizePlayerWithMousewheel(Rectangle *player);
 
 int main(void) {
-
     config();
     RenderTexture2D backgroundTexture = LoadRenderTexture(256,128);
     RenderTexture2D renderAll = LoadRenderTexture(256*scaleMultiplier,128*scaleMultiplier);
