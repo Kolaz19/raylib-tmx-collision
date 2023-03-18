@@ -25,12 +25,12 @@ MapLayout* initMapLayout(int xStart, int yStart, int tileHeight, int tileWidth, 
     tmx_resource_manager* rm = tmx_make_resource_manager();
     MapCollisionData* mapData = getRawMapData(rm,"simpleMap.tmx",1);
 
-/*     for (int i = 0; i < mapData->collisionTilesCount; i++) {
+    for (int i = 0; i < mapData->collisionTilesCount; i++) {
+        TileWithCollisionData* colData = mapData->collisionTiles+i;
         printf("x:%d\ty:%d\n",(mapData->collisionTiles+i)->xPos,(mapData->collisionTiles+i)->yPos);
-        printf("colX:%f\tcolY:%f\n",(mapData->collisionTiles+i)->collisionData->x,(mapData->collisionTiles+i)->collisionData->y);
     }
- */
-        printf("LayerID:%d\n",mapData->map->ly_head->id);
+
+
 
 
     unloadRawMapData(mapData);
