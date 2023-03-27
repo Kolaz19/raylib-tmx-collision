@@ -2,23 +2,17 @@
 #define MAP_COLLISION_H
 #include <stdbool.h>
 #include "./include/raylib.h"
+#include "include/tmx.h"
 
 
-typedef struct MapLayout {
-    int xStart;
-    int yStart;
-    int tileHeight;
-    int tileWidth;
-    int amountTileX;
-    int amountTileY;
+typedef struct CollisionBoxes {
     int amountCollisionBoxes;
-    Rectangle *collision;
-} MapLayout;
+    Rectangle *scaledCollision;
+    float scale;
+} CollisionBoxes;
 
-MapLayout* initMapLayout(int xStart, int yStart, int tileHeight, int tileWidth, int amountTileX, int amountTileY, int *collision);
-void unloadMapLayout(MapLayout *map);
-bool isColliding(const Rectangle *rect, MapLayout *map );
-void keepOutsideMapCollision (Rectangle *rect, Rectangle rectPreviousFrame, MapLayout *map);
+CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, float scale, tmx_resource_manager* resource_manager);
+
 
 
 #endif

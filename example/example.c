@@ -34,17 +34,9 @@ int main(void) {
 
 
     //Map Collision
-    int collisionMapping[8][16] = 
-    {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,1,1,0,0,0,1,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
 
-    MapLayout *map = initMapLayout(0,0,16*scaleMultiplier,16*scaleMultiplier,16,8,&collisionMapping[0][0]);
+
+   // MapLayout *map = initMapLayout(0,0,16*scaleMultiplier,16*scaleMultiplier,16,8,&collisionMapping[0][0]);
 
 
 
@@ -55,7 +47,7 @@ int main(void) {
         updatePlayerPosition(&player);
         
         //To use this method, we have to keep the previous frame position/information
-        keepOutsideMapCollision(&player, playerPrevious, map);
+        //keepOutsideMapCollision(&player, playerPrevious, map);
         playerPrevious = player;
 /*----------------------------------------------------------
 *   Draw all entities to one texture with proper scaling
@@ -91,7 +83,7 @@ int main(void) {
     }
 
     UnloadTMX(room);
-    unloadMapLayout(map);
+    //unloadMapLayout(map);
     CloseWindow();        // Close window and OpenGL context
     return 0;
 }
