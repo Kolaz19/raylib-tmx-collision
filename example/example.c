@@ -37,7 +37,8 @@ int main(void) {
 
 
    // MapLayout *map = initMapLayout(0,0,16*scaleMultiplier,16*scaleMultiplier,16,8,&collisionMapping[0][0]);
-
+    tmx_resource_manager* rm = tmx_make_resource_manager();
+    CollisionBoxes *boxes = initCollisionBoxes("simpleMap.tmx",(Vector2){0.0f,0.0f},7.0f,rm);
 
 
     while (!WindowShouldClose())
@@ -69,13 +70,17 @@ int main(void) {
 ----------------------------------------------------------*/
         BeginDrawing();
 
-            ClearBackground(BLACK);
+            ClearBackground(RAYWHITE);
                 DrawTexturePro(renderAll.texture,
                         (Rectangle){ 0.0f, 0.0f, (float)renderAll.texture.width, (float)-renderAll.texture.height },
                         (Rectangle){ (0.0f), (0.0f),renderAll.texture.width, renderAll.texture.height},
                         (Vector2){ 0, 0 },
                         0.0f,
                         WHITE);
+                for (int i = 0; i < boxes->amountCollisionBoxes; i++) {
+                    Rectangle *currentRectangle = boxes->scaledCollision+i;
+                    DrawRectangle(currentRectangle->x, currentRectangle->y, currentRectangle->width, currentRectangle->height, PINK);
+                }
 
         EndDrawing();
 

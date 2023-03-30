@@ -3,7 +3,7 @@
  <image source="pixil-frame-0.png" width="16" height="48"/>
  <tile id="0">
   <objectgroup draworder="index" id="2">
-   <object id="1" x="0.0078125" y="0.0131944" width="6.43785" height="15.9771"/>
+   <object id="1" x="7.00781" y="4.98194" width="3.0316" height="5.9146"/>
    <object id="2" x="10.7273" y="0" width="5.27273" height="16"/>
   </objectgroup>
  </tile>
