@@ -38,7 +38,7 @@ int main(void) {
 
    // MapLayout *map = initMapLayout(0,0,16*scaleMultiplier,16*scaleMultiplier,16,8,&collisionMapping[0][0]);
     tmx_resource_manager* rm = tmx_make_resource_manager();
-    CollisionBoxes *boxes = initCollisionBoxes("simpleMap.tmx",(Vector2){0.0f,0.0f},7.0f,rm);
+    CollisionBoxes *boxes = initCollisionBoxes("simpleMap.tmx",(Vector2){0.0f,0.0f},7.0f,rm, 1);
 
 
     while (!WindowShouldClose())
@@ -88,6 +88,8 @@ int main(void) {
     }
 
     UnloadTMX(room);
+    unloadMapCollision(boxes);
+    tmx_free_resource_manager(rm);
     //unloadMapLayout(map);
     CloseWindow();        // Close window and OpenGL context
     return 0;

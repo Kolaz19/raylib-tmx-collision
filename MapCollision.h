@@ -11,8 +11,8 @@ typedef struct CollisionBoxes {
     float scale;
 } CollisionBoxes;
 
-CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, float scale, tmx_resource_manager* resource_manager);
-
+CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, float scale, tmx_resource_manager* resource_manager, int layerId);
+void unloadMapCollision(CollisionBoxes *collisionBoxes);
 
 
 #endif

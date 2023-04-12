@@ -8,10 +8,10 @@
 
 
 
-CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, float scale, tmx_resource_manager* resource_manager) {
+CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, float scale, tmx_resource_manager* resource_manager, int layerId) {
 
 
-    MapCollisionData* mapData = getRawMapData(resource_manager,"simpleMap.tmx",1);
+    MapCollisionData* mapData = getRawMapData(resource_manager, tmxFileName, layerId);
 
     for (int i = 0; i < mapData->collisionTilesCount; i++) {
         TileWithCollisionData* colData = mapData->collisionTiles+i;
@@ -52,13 +52,14 @@ CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, floa
             currentIndex++;
         }
     }
-
+    unloadRawMapData(mapData);
     return collisionBoxes;
 
+}
 
-
-
-//TODO unload Resources
+void unloadMapCollision(CollisionBoxes *collisionBoxes) {
+    free(collisionBoxes->scaledCollision);
+    free(collisionBoxes);
 }
 
 
