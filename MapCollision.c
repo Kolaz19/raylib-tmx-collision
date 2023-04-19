@@ -10,17 +10,13 @@
 
 CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, float scale, tmx_resource_manager* resource_manager, int layerId) {
 
-
     MapCollisionData* mapData = getRawMapData(resource_manager, tmxFileName, layerId);
 
-    for (int i = 0; i < mapData->collisionTilesCount; i++) {
-        TileWithCollisionData* colData = mapData->collisionTiles+i;
-        printf("x:%d\ty:%d\n",(mapData->collisionTiles+i)->xPos,(mapData->collisionTiles+i)->yPos);
-    }
-
+    //Initialize collision data
     CollisionBoxes *collisionBoxes = malloc(sizeof(CollisionBoxes));
     collisionBoxes->amountCollisionBoxes = 0;
 
+    //Count collision boxes
     tmx_object* collision = NULL;
     for (int i = 0; i < mapData->collisionTilesCount; i++) {
         collision = mapData->collisionTiles[i].collisionData;
@@ -30,6 +26,7 @@ CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, floa
         }
     }
 
+    //Initialize collision boxes
     collisionBoxes->scaledCollision = malloc(sizeof(Rectangle) * collisionBoxes->amountCollisionBoxes);
     collisionBoxes->scale = scale;
     Rectangle* currentRect = NULL;
@@ -39,9 +36,9 @@ CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, floa
     int currentIndex = 0;
     for (int i = 0; i < mapData->collisionTilesCount; i++) {
         currentCollision = mapData->collisionTiles+i;
-
         currentCollisionData = currentCollision->collisionData;
-
+        
+        //Set position and dimensions of collision boxes
         while (currentCollisionData != NULL) {
             currentRect = collisionBoxes->scaledCollision+currentIndex;
             currentRect->x = origin.x + ((( origin.x + currentCollision->xPos * *mapData->tileWidth + currentCollisionData->x ) - origin.x ) * scale );
@@ -54,7 +51,6 @@ CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, floa
     }
     unloadRawMapData(mapData);
     return collisionBoxes;
-
 }
 
 void unloadMapCollision(CollisionBoxes *collisionBoxes) {

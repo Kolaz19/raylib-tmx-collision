@@ -10,7 +10,7 @@
     const int originalScreenHeight = 1080*0.95f;
     static int currentScreenWidth = originalScreenWidth;
     static int currentScreenHeight = originalScreenHeight;
-    const int scaleMultiplier = 7;
+    const int scaleMultiplier = 12;
 
 void config();
 void updatePlayerPosition(Rectangle *rect);
@@ -38,7 +38,7 @@ int main(void) {
 
    // MapLayout *map = initMapLayout(0,0,16*scaleMultiplier,16*scaleMultiplier,16,8,&collisionMapping[0][0]);
     tmx_resource_manager* rm = tmx_make_resource_manager();
-    CollisionBoxes *boxes = initCollisionBoxes("simpleMap.tmx",(Vector2){0.0f,0.0f},7.0f,rm, 1);
+    CollisionBoxes *boxes = initCollisionBoxes("simpleMap.tmx",(Vector2){0.0f,0.0f},scaleMultiplier,rm, 1);
 
 
     while (!WindowShouldClose())

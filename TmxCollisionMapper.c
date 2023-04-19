@@ -5,7 +5,6 @@
 
 int getAmountOfTilesWithCollision(tmx_map* map, tmx_layer* layer);
 
-//TODO resource manager NULL
 MapCollisionData* getRawMapData(tmx_resource_manager* rm, const char *tmxFileName, int layerid) {
     int targetGid = 0;
     tmx_tile* currentTile;
