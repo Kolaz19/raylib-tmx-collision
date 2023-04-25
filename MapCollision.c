@@ -41,8 +41,8 @@ CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, floa
         //Set position and dimensions of collision boxes
         while (currentCollisionData != NULL) {
             currentRect = collisionBoxes->scaledCollision+currentIndex;
-            currentRect->x = origin.x + ((( origin.x + currentCollision->xPos * *mapData->tileWidth + currentCollisionData->x ) - origin.x ) * scale );
-            currentRect->y = origin.y + ((( origin.y + currentCollision->yPos * *mapData->tileHeight + currentCollisionData->y ) - origin.y ) * scale );
+            currentRect->x = origin.x + (( currentCollision->xPos * *mapData->tileWidth + currentCollisionData->x )  * scale  );
+            currentRect->y = origin.y + ((  currentCollision->yPos * *mapData->tileHeight + currentCollisionData->y )  * scale  );
             currentRect->width = currentCollisionData->width * scale;
             currentRect->height = currentCollisionData->height * scale;
             currentCollisionData = currentCollisionData->next;
@@ -57,6 +57,3 @@ void unloadMapCollision(CollisionBoxes *collisionBoxes) {
     free(collisionBoxes->scaledCollision);
     free(collisionBoxes);
 }
-
-
-
