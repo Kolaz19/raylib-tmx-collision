@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.10.0" name="secondTileset" tilewidth="16" tileheight="16" tilecount="4" columns="4">
  <image source="pixil-frame-1.png" width="64" height="16"/>
+ <tile id="1">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="13" y="1" width="1" height="14"/>
+  </objectgroup>
+ </tile>
  <tile id="2">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0.988889" y="11.0121" width="3.99899" height="3.98788"/>
