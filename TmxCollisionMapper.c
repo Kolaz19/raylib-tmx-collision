@@ -15,8 +15,7 @@ MapCollisionData* getRawMapData(tmx_resource_manager* rm, const char *tmxFileNam
     collisionData->map = map;
     collisionData->tileHeight = &map->ts_head->tileset->tile_height;
     collisionData->tileWidth = &map->ts_head->tileset->tile_width;
-    //TODO Tile Offset
-
+    //TODO Tileset Offset
 
     tmx_layer* currentLayer = map->ly_head;
     while (currentLayer->id != layerid ) {

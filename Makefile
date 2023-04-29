@@ -7,6 +7,7 @@ EX_DIR = ./example/
 LINKERS =-L $(LIB_DIR) -lraylib -lopengl32 -lgdi32 -lwinmm -ltmx -lxml2 -lzlibstatic -lraytmxcol
 OUTPUT_FLAGS = -Wall -std=c99 -Wno-missing-braces
 CFLAGS = -static -fdiagnostics-color=always
+DEBUG_FLAG = #-g
 
 build_debug: $(OBJ_DIR)example.o $(LIB_DIR)libraytmxcol.a
 	$(CC) $(CFLAGS) -g -o demo $(OUTPUT_FLAGS) $(OBJ_DIR)example.o $(LINKERS)
@@ -17,15 +18,15 @@ $(LIB_DIR)libraytmxcol.a: $(OBJ_DIR)MapCollision.o $(OBJ_DIR)TmxCollisionMapper.
 	mv libraytmxcol.a $(LIB_DIR)
 
 $(OBJ_DIR)example.o: $(EX_DIR)example.c
-	$(CC) -c -g $(EX_DIR)example.c
+	$(CC) -c $(DEBUG_FLAG) $(EX_DIR)example.c
 	mv example.o $(OBJ_DIR)
 
 $(OBJ_DIR)MapCollision.o: MapCollision.c
-	$(CC) -c -g MapCollision.c
+	$(CC) -c $(DEBUG_FLAG) MapCollision.c
 	mv MapCollision.o $(OBJ_DIR)
 
 $(OBJ_DIR)TmxCollisionMapper.o: TmxCollisionMapper.c
-	$(CC) -c -g TmxCollisionMapper.c
+	$(CC) -c $(DEBUG_FLAG) TmxCollisionMapper.c
 	mv TmxCollisionMapper.o $(OBJ_DIR)
 
 clean: 

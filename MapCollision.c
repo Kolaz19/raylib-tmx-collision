@@ -53,6 +53,7 @@ CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, floa
     return collisionBoxes;
 }
 
+
 void unloadMapCollision(CollisionBoxes *collisionBoxes) {
     free(collisionBoxes->scaledCollision);
     free(collisionBoxes);
