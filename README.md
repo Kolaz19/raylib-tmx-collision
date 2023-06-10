@@ -7,7 +7,7 @@ raylib-tmx - https://github.com/RobLoach/raylib-tmx
 - Look at MAKEFILE for dependencies
 
 ##### Usage
-Just include MapCollision.h, TmxCollisionMapper.h and libraylib.a in your project
+Just include TmxCollisionMapper.h and MapCollision.h  and libraytmxcol.a in your project
 
 For instructions, look into example folder. Start animation with ENTER
 

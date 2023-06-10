@@ -25,14 +25,12 @@ CollisionBoxes* initCollisionBoxes(const char* tmxFileName, Vector2 origin, floa
             collision = collision->next;
         }
     }
-
     //Initialize collision boxes
     collisionBoxes->scaledCollision = malloc(sizeof(Rectangle) * collisionBoxes->amountCollisionBoxes);
     collisionBoxes->scale = scale;
     Rectangle* currentRect = NULL;
     TileWithCollisionData* currentCollision = NULL;
     tmx_object* currentCollisionData = NULL;
-
     int currentIndex = 0;
     for (int i = 0; i < mapData->collisionTilesCount; i++) {
         currentCollision = mapData->collisionTiles+i;
